@@ -6,7 +6,13 @@ import (
 	"strconv"
 )
 
-func reverse(list []int) []int {
+func main() {
+	AddLinkedList([]int{2,4,3}, []int{5,6,4})
+	AddLinkedList([]int{0}, []int{0})
+	AddLinkedList([]int{9,9,9,9,9,9,9}, []int{9,9,9,9})
+}
+
+func Reverse(list []int) []int {
 	reverseList := make([]int, 0)
 	for i := range list {
 		reverseList = append(reverseList, list[len(list) - i - 1])
@@ -14,7 +20,7 @@ func reverse(list []int) []int {
 	return reverseList
 }
 
-func concat(list []int) int {
+func Concat(list []int) int {
 	textSlice := []string{}
 	for _, n := range list {
         text := strconv.Itoa(n)
@@ -28,7 +34,7 @@ func concat(list []int) int {
 	return number
 }
 
-func split(n int) []int {
+func Split(n int) []int {
 	splitList := make([]int, 0)
 
 	if n == 0 {
@@ -42,12 +48,12 @@ func split(n int) []int {
 	return splitList
 }
 
-func addLinkedList(L1 []int, L2 []int) []int {
-    first := reverse(L1)
-	second := reverse(L2)
-	firstNum := concat(first)
-	secondNum := concat(second)
+func AddLinkedList(L1 []int, L2 []int) []int {
+    first := Reverse(L1)
+	second := Reverse(L2)
+	firstNum := Concat(first)
+	secondNum := Concat(second)
 	total := firstNum + secondNum
-	splitTotal := split(total)
+	splitTotal := Split(total)
 	return splitTotal
 }
