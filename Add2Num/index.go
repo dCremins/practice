@@ -1,59 +1,57 @@
 package main
 
-import (
-	"fmt"
-    "strings"
-	"strconv"
-)
+
+type ListNode struct {
+	Val int
+	Next *ListNode
+}
 
 func main() {
-	AddLinkedList([]int{2,4,3}, []int{5,6,4})
-	AddLinkedList([]int{0}, []int{0})
-	AddLinkedList([]int{9,9,9,9,9,9,9}, []int{9,9,9,9})
-}
-
-func Reverse(list []int) []int {
-	reverseList := make([]int, 0)
-	for i := range list {
-		reverseList = append(reverseList, list[len(list) - i - 1])
+	l1 := &ListNode{
+		Val: 2,
+		Next: &ListNode{
+			Val:4,
+			Next: &ListNode{
+				Val:3,
+			},
+		},
 	}
-	return reverseList
-}
-
-func Concat(list []int) int {
-	textSlice := []string{}
-	for _, n := range list {
-        text := strconv.Itoa(n)
-        textSlice = append(textSlice, text)
-    }
-	numString := strings.Join(textSlice, "")
-	number, err := strconv.Atoi(numString)
-	if err != nil {
-		fmt.Println("err", err)
+	l2 := &ListNode{
+		Val: 5,
+		Next: &ListNode{
+			Val:6,
+			Next: &ListNode{
+				Val:4,
+			},
+		},
 	}
-	return number
+	addTwoNumbers(l1, l2)
 }
 
-func Split(n int) []int {
-	splitList := make([]int, 0)
 
-	if n == 0 {
-		splitList = append(splitList, 0)
+func addTwoNumbers(l1 *ListNode, l2 *ListNode) *ListNode {
+	carry := 0
+	sum := 0
+	node := &ListNode{}
+	result := node
+    for l1 != nil || l2 != nil || carry != 0 {
+		sum = carry
+		if l1 != nil {
+			sum += l1.Val
+			l1 = l1.Next
+		}
+		if l2 != nil {
+			sum += l2.Val
+			l2 = l2.Next
+		}
+		if sum >= 10 {
+			carry = sum / 10
+			sum = sum % 10
+		} else {
+			carry = 0
+		}
+		node.Next = &ListNode{Val:sum}
+		node = node.Next
 	}
-
-	for n != 0 {
-        splitList = append(splitList, n % 10)
-        n /= 10
-    }
-	return splitList
-}
-
-func AddLinkedList(L1 []int, L2 []int) []int {
-    first := Reverse(L1)
-	second := Reverse(L2)
-	firstNum := Concat(first)
-	secondNum := Concat(second)
-	total := firstNum + secondNum
-	splitTotal := Split(total)
-	return splitTotal
+	return result.Next
 }
