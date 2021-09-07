@@ -8,6 +8,7 @@ import (
 	"reflect"
 )
 
+
 var data = []struct {
 	input		string // input
 	expected	string // expected result
