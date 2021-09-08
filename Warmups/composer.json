@@ -1,9 +1,6 @@
----
-to: <%= h.changeCase.pascal(name) %>/composer.json
----
 {
-    "name": "php/<%= h.changeCase.snakeCase(name) %>",
-    "description": "<%= h.changeCase.pascal(name) %>",
+    "name": "php/warmups",
+    "description": "Warmups",
     "authors": [
         {
             "name": "Devin Cremins",

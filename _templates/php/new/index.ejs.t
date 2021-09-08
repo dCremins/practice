@@ -1,7 +1,8 @@
 ---
-to: <%= h.changeCase.pascal(name) %>/index.php
+to: <%= h.changeCase.pascal(name) %>/Solution.php
 ---
 <?php
+namespace Practice;
 
 class Solution {
     /**

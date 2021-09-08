@@ -1,17 +1,19 @@
 ---
-to: <%= h.changeCase.pascal(name) %>/test.php
+to: <%= h.changeCase.pascal(name) %>/<%= h.changeCase.pascal(name) %>Test.php
 ---
 <?php
+require 'vendor/autoload.php';
 use PHPUnit\Framework\TestCase;
-use index
 
 class <%= h.changeCase.pascal(name) %>Test extends TestCase
 {
-    public function setUp()
-    {
-        $this->Solution = new Solution();
-    }
+    protected $stack;
 
+    protected function setUp(): void
+    {
+        $this->Solution = new Practice\Solution();
+    }
+	
     public function test<%= h.changeCase.pascal(name) %>()
     {
 		$testData = array(
@@ -19,7 +21,7 @@ class <%= h.changeCase.pascal(name) %>Test extends TestCase
 				'input' => 'input',
 				'expected' => 'expected'
 			)
-		)
+		);
 		foreach ($testData as $values) {
 			$this->assertEquals($this->Solution-><%= h.changeCase.pascal(name) %>($values['input']), $values['expected']);
 		}
