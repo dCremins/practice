@@ -1,0 +1,30 @@
+{
+  "name": "practice",
+  "version": "1.0.0",
+  "description": "Coding Practice Repository",
+  "type": "module",
+  "dependencies": {
+    "jest": "^27.3.1",
+    "typescript": "^4.4.4"
+  },
+  "devDependencies": {
+    "jest-environment-node": "^27.3.1"
+  },
+  "scripts": {
+    "test": "npx --node-arg=--experimental-vm-modules jest"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/dCremins/practice.git"
+  },
+  "author": "Devin Cremins",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/dCremins/practice/issues"
+  },
+  "homepage": "https://github.com/dCremins/practice#readme",
+  "jest": {
+    "testEnvironment": "jest-environment-node",
+    "transform": {}
+  }
+}
